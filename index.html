@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>One Fourth Bakehouse — Celebration cakes, baked to order</title>
+<meta name="description" content="Custom celebration cakes, eggless or egg, baked to order in small batches. Pre-order only, minimum 24 hours. Order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b1512;
+  --ink-soft:#6f635c;
+  --ink-faint:#a2968e;
+  --cream:#fdfaf7;
+  --cream-2:#f6efe8;
+  --line:#ece3da;
+  --cocoa:#6b3f27;
+  --cocoa-light:#9a6a4b;
+  --berry:#c2425a;
+  --wa:#25d366;
+  --r:18px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --pad:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--cream);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.serif{font-family:"Instrument Serif",Georgia,"Times New Roman",serif;font-weight:400}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}
+.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}
+.reveal[data-d="4"]{transition-delay:.32s}
+.reveal[data-d="5"]{transition-delay:.4s}
+
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  padding:14px var(--pad);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  transition:background .5s var(--ease),box-shadow .5s var(--ease),padding .5s var(--ease),color .5s var(--ease);
+  color:#fff;
+}
+header.solid{
+  background:rgba(253,250,247,.78);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);
+  backdrop-filter:saturate(180%) blur(18px);
+  box-shadow:0 1px 0 rgba(0,0,0,.06);
+  color:var(--ink);padding:10px var(--pad);
+}
+.brand{font-size:clamp(19px,2.4vw,23px);letter-spacing:.2px;white-space:nowrap}
+.brand em{font-style:italic}
+nav{display:flex;align-items:center;gap:clamp(14px,2.4vw,30px);font-size:13.5px}
+nav a{opacity:.85;transition:opacity .3s}
+nav a:hover{opacity:1}
+nav .navlink{display:none}
+@media(min-width:760px){nav .navlink{display:inline}}
+.btn-wa{
+  background:var(--wa);color:#fff;padding:9px 17px;border-radius:999px;
+  font-size:13.5px;font-weight:600;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:7px;
+  transition:transform .3s var(--ease),filter .3s;
+}
+.btn-wa:hover{transform:translateY(-1.5px) scale(1.02);filter:brightness(1.05)}
+.btn-wa svg{width:15px;height:15px;fill:currentColor;flex:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#20160f}
+.hero-media{position:absolute;inset:-6% 0 -6% 0;will-change:transform}
+.hero-media img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s var(--ease),transform 14s linear}
+.hero-media img.loaded{opacity:.92;transform:scale(1.06)}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(20,13,9,.5) 0%,rgba(20,13,9,.12) 32%,rgba(20,13,9,.72) 100%);
+}
+.hero-inner{position:relative;z-index:3;color:#fff;padding:0 var(--pad) clamp(54px,9vh,100px);width:100%;max-width:1180px;margin:0 auto}
+.eyebrow{
+  font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  opacity:.82;margin-bottom:18px;
+}
+h1{
+  font-size:clamp(44px,9.2vw,104px);line-height:.98;letter-spacing:-.03em;
+  font-weight:600;max-width:14ch;
+}
+h1 .it{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.hero p.lede{margin-top:20px;font-size:clamp(15px,1.9vw,19.5px);max-width:40ch;opacity:.92;
+  line-height:1.55;min-height:calc(4 * 1.55em)}
+.lede-line{display:inline-block;transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.lede-line.out{opacity:0;transform:translateY(-9px)}
+.hero-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+.btn-ghost{
+  border:1px solid rgba(255,255,255,.55);color:#fff;padding:11px 22px;border-radius:999px;
+  font-size:14px;font-weight:500;transition:background .35s var(--ease),transform .3s var(--ease);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.14);transform:translateY(-1.5px)}
+.btn-wa.lg,.btn-ghost{padding:12px 24px;font-size:14.5px}
+.scroll-cue{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:4;
+  color:rgba(255,255,255,.7);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  animation:bob 2.6s var(--ease) infinite;
+}
+@keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.55}50%{transform:translate(-50%,7px);opacity:1}}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--cocoa);color:#fff;overflow:hidden;padding:11px 0;white-space:nowrap}
+.ticker-row{display:inline-flex;gap:0;animation:slide 32s linear infinite}
+.ticker:hover .ticker-row{animation-play-state:paused}
+.ticker span{font-size:12px;letter-spacing:.13em;text-transform:uppercase;padding:0 26px;opacity:.92}
+.ticker span::after{content:"•";margin-left:26px;opacity:.4}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(66px,11vh,132px) 0}
+.sec-head{max-width:46ch;margin-bottom:clamp(34px,6vh,62px)}
+.label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--cocoa-light);margin-bottom:14px}
+h2{font-size:clamp(31px,5.3vw,60px);line-height:1.04;letter-spacing:-.025em;font-weight:600}
+h2 .it{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
+.sec-head p{margin-top:16px;color:var(--ink-soft);font-size:clamp(14.5px,1.6vw,17px);line-height:1.6}
+
+/* ---------- signatures ---------- */
+.sigs{display:grid;gap:clamp(20px,3vw,34px);grid-template-columns:1fr}
+@media(min-width:720px){.sigs{grid-template-columns:repeat(3,1fr)}}
+.sig{display:flex;flex-direction:column}
+.sig-media{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background:var(--cream-2);margin-bottom:18px}
+.sig-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.sig:hover .sig-media img{transform:scale(1.05)}
+.sig-no{
+  font-family:"Instrument Serif",Georgia,serif;font-size:12.5px;letter-spacing:.2em;
+  color:var(--cocoa-light);text-transform:uppercase;margin-bottom:9px;
+}
+.sig h3{font-size:clamp(21px,2.3vw,27px);line-height:1.14;letter-spacing:-.018em;font-weight:600}
+.sig .desc{margin-top:11px;color:var(--ink-soft);font-size:14.5px;line-height:1.62}
+.sig .prices{margin-top:auto;padding-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.sig .btn-wa{align-self:flex-start}
+.chip{
+  border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 14px;
+  font-size:13px;color:var(--ink);
+}
+.chip b{font-weight:600}
+.chip i{font-style:normal;color:var(--ink-faint);display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px}
+.sig .btn-wa{margin-top:22px}
+
+/* ---------- menu ---------- */
+.menu-bar{
+  position:sticky;top:58px;z-index:40;display:flex;justify-content:center;
+  padding:10px 0;margin-bottom:34px;
+}
+.seg{
+  display:inline-flex;background:rgba(246,239,232,.9);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px;position:relative;
+}
+.seg button{
+  appearance:none;border:0;background:transparent;cursor:pointer;
+  font:inherit;font-size:13.5px;font-weight:500;color:var(--ink-soft);
+  padding:8px 20px;border-radius:999px;position:relative;z-index:2;
+  transition:color .35s var(--ease);white-space:nowrap;
+}
+.seg button.on{color:#fff}
+.seg .thumb{
+  position:absolute;top:4px;bottom:4px;background:var(--ink);border-radius:999px;z-index:1;
+  transition:left .45s var(--ease),width .45s var(--ease);
+}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:clamp(14px,2.2vw,26px)}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s;
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 40px -16px rgba(60,35,20,.22);border-color:#e0d3c6}
+.ph{position:relative;aspect-ratio:1/1;overflow:hidden;background:linear-gradient(145deg,var(--cream-2),#ead9c9)}
+.ph .mono{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:"Instrument Serif",Georgia,serif;font-size:50px;color:rgba(107,63,39,.22);
+}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.ph img.loaded{opacity:1}
+.card:hover .ph img.loaded{transform:scale(1.07)}
+.flag{
+  position:absolute;top:10px;left:10px;z-index:3;
+  background:rgba(27,21,18,.74);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:#fff;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 10px;border-radius:999px;
+}
+.card-b{padding:15px 15px 16px;display:flex;flex-direction:column;flex:1;gap:4px}
+.card-b h4{font-size:15.5px;font-weight:600;letter-spacing:-.012em;line-height:1.25}
+.card-b .sub{font-size:12.5px;color:var(--ink-faint);line-height:1.45}
+.price{margin-top:auto;padding-top:12px;display:flex;align-items:baseline;gap:7px}
+.price .amt{font-size:21px;font-weight:600;letter-spacing:-.02em}
+.price .unit{font-size:11.5px;color:var(--ink-faint);letter-spacing:.04em}
+.also{font-size:11.5px;color:var(--ink-faint);line-height:1.45;margin-top:4px}
+.also b{font-weight:600;color:var(--ink-soft)}
+.askme{display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 13px;
+  font-size:13.5px;font-weight:600;color:var(--cocoa)}
+.askme::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cocoa-light)}
+.order{
+  margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px;
+  background:var(--ink);color:#fff;border-radius:11px;padding:10px;
+  font-size:13px;font-weight:600;transition:background .35s var(--ease),transform .3s var(--ease);
+}
+.order:hover{background:var(--wa);transform:translateY(-1px)}
+.order svg{width:14px;height:14px;fill:currentColor}
+.order.off{background:var(--cream-2);color:var(--ink-faint);pointer-events:none}
+.eggless{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 18px;font-size:14px;
+  color:var(--ink-soft);margin-top:26px;line-height:1.6;
+  opacity:0;transform:translateY(-6px);max-height:0;overflow:hidden;padding-top:0;padding-bottom:0;
+  border-color:transparent;margin-top:0;
+  transition:opacity .4s var(--ease),transform .4s var(--ease),max-height .45s var(--ease),
+             margin-top .45s var(--ease),padding .45s var(--ease),border-color .4s;
+}
+.eggless.show{opacity:1;transform:none;max-height:180px;margin-top:26px;
+  padding-top:15px;padding-bottom:15px;border-color:var(--line)}
+.eggless b{color:var(--ink);font-weight:600}
+
+/* ---------- notice ---------- */
+.notice{background:var(--ink);color:#fff;border-radius:28px;padding:clamp(28px,5vw,58px)}
+.notice h2{font-size:clamp(26px,4.2vw,46px)}
+.notice .grid-n{display:grid;gap:clamp(18px,3vw,34px);margin-top:34px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.nbox .k{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(33px,4.6vw,48px);line-height:1;color:#fff}
+.nbox .v{margin-top:10px;font-size:14px;color:rgba(255,255,255,.66);line-height:1.6}
+.nbox.hot .k{color:#ff9d8a}
+
+/* ---------- visit ---------- */
+.visit{display:grid;gap:clamp(22px,4vw,54px)}
+@media(min-width:860px){.visit{grid-template-columns:1fr 1fr}}
+.hours{list-style:none;border-top:1px solid var(--line)}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.hours li span:last-child{color:var(--ink-soft)}
+.hours li.closed span:last-child{color:var(--berry)}
+.map{
+  position:relative;border-radius:26px;overflow:hidden;min-height:290px;
+  background:linear-gradient(145deg,#eee6dd,#dcc9b6);display:flex;align-items:flex-end;
+}
+.map .mapgrid{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(107,63,39,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(107,63,39,.1) 1px,transparent 1px);
+  background-size:38px 38px}
+.map .pin{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:var(--berry);box-shadow:0 0 0 0 rgba(194,66,90,.5);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 26px rgba(194,66,90,0)}100%{box-shadow:0 0 0 0 rgba(194,66,90,0)}}
+.map .mapfoot{position:relative;z-index:2;width:100%;padding:20px;background:linear-gradient(transparent,rgba(255,255,255,.92) 55%)}
+.map .mapfoot strong{display:block;font-size:16px;margin-bottom:4px}
+.map .mapfoot span{font-size:13.5px;color:var(--ink-soft)}
+.map .mapfoot a{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--cocoa);border-bottom:1.5px solid var(--cocoa);padding-bottom:1px}
+.pickup{margin-top:22px;background:var(--cream-2);border-radius:14px;padding:16px 18px;font-size:14px;color:var(--ink-soft)}
+.pickup b{color:var(--ink)}
+
+/* ---------- terms ---------- */
+.tgrid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:700px){.tgrid{grid-template-columns:1fr 1fr}}
+.tcard{
+  display:flex;gap:15px;background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:18px 19px;align-items:flex-start;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s;
+}
+.tcard:hover{transform:translateY(-3px);box-shadow:0 14px 34px -18px rgba(60,35,20,.22);border-color:#e0d3c6}
+.ti{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none;
+  background:var(--cream-2);color:var(--cocoa);transition:background .4s,color .4s}
+.ti svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.tcard.key .ti{background:var(--cocoa);color:#fff}
+.tcard.key h4{color:var(--cocoa)}
+.tcard h4{font-size:14.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:5px}
+.tcard p{font-size:13.5px;line-height:1.56;color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#fff;padding:clamp(52px,8vh,92px) 0 34px;margin-top:clamp(40px,7vh,90px)}
+.foot-top{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-end}
+footer .brand{font-size:clamp(26px,4.4vw,44px)}
+.foot-links{display:flex;gap:22px;font-size:14px;color:rgba(255,255,255,.62)}
+.foot-links a:hover{color:#fff}
+.foot-bot{margin-top:44px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);
+  font-size:12px;color:rgba(255,255,255,.4);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+
+/* ---------- fab ---------- */
+.fab{
+  position:fixed;right:18px;bottom:18px;z-index:70;
+  background:var(--wa);color:#fff;border-radius:999px;
+  padding:13px 19px;font-size:14.5px;font-weight:600;
+  display:inline-flex;align-items:center;gap:9px;
+  box-shadow:0 12px 30px -8px rgba(37,211,102,.6);
+  opacity:0;transform:translateY(16px) scale(.94);pointer-events:none;
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+.fab.show{opacity:1;transform:none;pointer-events:auto}
+.fab svg{width:19px;height:19px;fill:currentColor}
+@media(max-width:560px){.fab span{display:none}.fab{padding:15px}}
+
+/* ---------- hero chocolate pour ---------- */
+.hero{background:#f7f0e7}
+.hero::after{opacity:0;transition:opacity 1.1s var(--ease)}
+.hero.poured::after{opacity:1}
+.hero:not(.poured) .hero-media img.loaded{opacity:0}
+.hero-media img{transition:opacity 1.3s var(--ease),transform 14s linear}
+
+/* the falling stream, before the sheet arrives */
+.stream{
+  position:absolute;z-index:4;left:50%;top:0;width:17px;margin-left:-8.5px;height:46vh;
+  background:linear-gradient(180deg,#3a2110 0%,#4e2d17 30%,#5c3620 78%,#412510 100%);
+  border-radius:0 0 9px 9px;transform:scaleY(0);transform-origin:top;
+}
+.stream::after{content:"";position:absolute;top:0;bottom:0;left:4px;width:4px;border-radius:5px;
+  background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,.08))}
+.stream .splat{position:absolute;bottom:-9px;left:50%;width:34px;height:20px;margin-left:-17px;
+  border-radius:50%;background:#412510;opacity:0}
+
+/* the sheet */
+.pour{position:absolute;inset:0;z-index:3;transform:translateY(-100%);will-change:transform}
+.pour .sheet{position:absolute;inset:0;
+  background:linear-gradient(168deg,#2f1a0c 0%,#4a2a16 34%,#5e3821 68%,#3d2210 100%)}
+.pour .gloss{position:absolute;top:0;bottom:0;left:14%;width:22%;
+  background:linear-gradient(90deg,transparent,rgba(255,214,170,.08) 45%,transparent)}
+.pour .gloss.b{left:62%;width:14%;background:linear-gradient(90deg,transparent,rgba(255,214,170,.05),transparent)}
+.pour .edge{position:absolute;top:100%;left:0;width:100%;height:92px;pointer-events:none}
+.pour .edge svg{width:100%;height:100%;display:block}
+.runner{position:absolute;top:100%;width:9px;border-radius:0 0 9px 9px;
+  background:linear-gradient(180deg,#43260f,#2f1a0c);transform-origin:top;transform:scaleY(0)}
+.runner::after{content:"";position:absolute;left:50%;bottom:-5px;width:13px;height:13px;margin-left:-6.5px;
+  border-radius:50%;background:#2f1a0c}
+
+.hero-inner .reveal{opacity:0;transform:translateY(26px)}
+.hero-inner .reveal.in{opacity:1;transform:none}
+header .brand{opacity:0}
+header.shown .brand{opacity:1}
+header nav{opacity:0;transition:opacity .65s var(--ease) .1s}
+header.shown nav{opacity:1}
+.flylogo{
+  position:fixed;z-index:7;white-space:nowrap;pointer-events:none;
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:0;
+  font-size:clamp(28px,6.2vw,64px);line-height:1.1;
+  color:#46290f;opacity:0;transform-origin:left top;will-change:transform,opacity;
+}
+.flylogo em{font-style:italic}
+.scroll-cue{opacity:0;transition:opacity .8s var(--ease)}
+.scroll-cue.shown{opacity:1}
+.skip{position:absolute;z-index:6;bottom:24px;left:0;right:0;text-align:center;font-size:10.5px;
+  letter-spacing:.22em;text-transform:uppercase;color:rgba(107,63,39,.5);
+  opacity:0;animation:skipin .5s var(--ease) 1.1s forwards}
+.hero.poured .skip{display:none}
+@keyframes skipin{to{opacity:1}}
+
+/* ---------- piped-cream section transition ---------- */
+#pipe{
+  position:fixed;inset:0;z-index:180;pointer-events:none;
+  background:linear-gradient(165deg,#6b3f27,#34200f);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition:opacity .34s var(--ease),visibility .34s;
+}
+#pipe.on{opacity:1;visibility:visible}
+#pipe svg{height:min(86vh,700px);width:auto;overflow:visible}
+#pipe path.cream{
+  fill:none;stroke:#fffaf3;stroke-width:13;stroke-linecap:round;stroke-linejoin:round;
+  filter:drop-shadow(0 4px 7px rgba(0,0,0,.34));
+}
+#pipe path.hl{stroke:rgba(255,255,255,.5);stroke-width:3.5;filter:none}
+#pipe #can{opacity:0;transition:opacity .22s var(--ease);filter:drop-shadow(0 6px 12px rgba(0,0,0,.45))}
+#pipe.draw #can{opacity:1}
+#pipe .lbl{
+  position:absolute;bottom:9vh;left:0;right:0;text-align:center;color:#fff;
+  font-size:12px;letter-spacing:.3em;text-transform:uppercase;opacity:0;
+  transition:opacity .5s var(--ease) .3s;
+}
+#pipe.draw .lbl{opacity:.72}
+
+/* ---------- testimonials ---------- */
+.marquee{position:relative;overflow:hidden;cursor:grab;padding:6px 0 10px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee.grabbing{cursor:grabbing}
+.mrow{display:flex;gap:20px;width:max-content;will-change:transform}
+.rev{width:min(80vw,372px);background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:22px 24px 19px;display:flex;flex-direction:column;gap:11px;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s}
+.marquee:not(.grabbing) .rev:hover{transform:translateY(-5px);box-shadow:0 18px 42px -18px rgba(60,35,20,.26);border-color:#e0d3c6}
+.stars{color:#e3a52a;font-size:13.5px;letter-spacing:3px;line-height:1}
+.rev q{font-size:15px;line-height:1.62;color:var(--ink);quotes:"\201C" "\201D";display:block}
+.rev q::before{content:open-quote;color:var(--ink-faint)}
+.rev q::after{content:close-quote;color:var(--ink-faint)}
+.who{margin-top:auto;display:flex;align-items:center;gap:11px;padding-top:8px}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none;
+  font-family:"Instrument Serif",Georgia,serif;font-size:15px;color:#fff;background:var(--cocoa)}
+.who .nm{font-size:13.5px;font-weight:600;line-height:1.3}
+.who .dt{font-size:12px;color:var(--ink-faint)}
+.revfoot{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.revlink{font-size:14px;font-weight:600;color:var(--cocoa);border-bottom:1.5px solid var(--cocoa);padding-bottom:1px}
+.revwarn{font-size:13px;color:var(--berry);background:#fdf1f3;border-radius:10px;padding:9px 13px;line-height:1.5}
+@media(prefers-reduced-motion:reduce){.marquee{overflow-x:auto}}
+
+/* ---------- sprinkles ---------- */
+#sprinkles{position:fixed;inset:0;z-index:190;pointer-events:none;overflow:hidden}
+#sprinkles i{position:absolute;width:5px;height:11px;border-radius:3px;display:block;will-change:transform,opacity}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg style="display:none">
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.27-1.38a9.9 9.9 0 004.77 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></symbol>
+  <symbol id="i-bento" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M3.5 12h17M12 7.5v12"/></symbol>
+  <symbol id="i-chill" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/></symbol>
+  <symbol id="i-custom" viewBox="0 0 24 24"><path d="M4 20l4-1 10.1-10.1a2.1 2.1 0 1 0-3-3L5 16l-1 4z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></symbol>
+  <symbol id="i-fresh" viewBox="0 0 24 24"><path d="M20 4C10 4 4 9 4 16a5 5 0 0 0 5 5c7 0 11-6 11-17z"/><path d="M4.5 20c3.5-6 7.5-8.5 11.5-9.5"/></symbol>
+  <symbol id="i-pay" viewBox="0 0 24 24"><circle cx="7.6" cy="7.6" r="2.7"/><circle cx="16.4" cy="16.4" r="2.7"/><path d="M19 5L5 19"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5.6 8h12.8l-1 12.5h-10.8z"/><path d="M9 8V6.2a3 3 0 0 1 6 0V8"/></symbol>
+</svg>
+
+<header id="hdr">
+  <a href="#top" class="brand serif">One <em>Fourth</em> Bakehouse</a>
+  <nav>
+    <a href="#signatures" class="navlink">Signatures</a>
+    <a href="#menu" class="navlink">Menu</a>
+    <a href="#reviews" class="navlink">Reviews</a>
+    <a href="#visit" class="navlink">Visit</a>
+    <a class="btn-wa" id="navWa" href="#"><svg><use href="#wa"/></svg>Order</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-media" id="heroMedia">
+    <img data-src="https://loremflickr.com/1600/1100/celebration,cake?lock=7" alt="">
+  </div>
+
+  <div class="stream" id="stream"><div class="splat"></div></div>
+  <div class="pour" id="pour">
+    <div class="sheet"></div>
+    <div class="gloss"></div>
+    <div class="gloss b"></div>
+    <div class="edge">
+      <svg viewBox="0 0 1200 92" preserveAspectRatio="none">
+        <path fill="#3d2210" d="M0,0 H1200 V18
+          C1176,20 1168,52 1150,53 C1131,54 1126,26 1108,22
+          C1082,17 1074,74 1050,75 C1028,76 1022,28 1000,24
+          C973,19 966,46 944,47 C922,48 916,22 892,20
+          C860,17 852,84 824,85 C798,86 792,30 766,26
+          C740,22 732,58 708,59 C684,60 678,24 652,22
+          C618,19 610,68 582,69 C556,70 550,28 524,24
+          C498,20 490,50 466,51 C442,52 436,22 410,20
+          C376,17 368,78 340,79 C314,80 308,30 282,26
+          C256,22 248,54 224,55 C200,56 194,24 168,22
+          C136,19 128,62 100,63 C76,64 70,28 44,24
+          C26,21 14,34 0,22 Z"/>
+      </svg>
+    </div>
+  </div>
+  <div class="skip">Tap to skip</div>
+  <div class="flylogo" id="flyLogo">One <em>Fourth</em> Bakehouse</div>
+
+  <div class="hero-inner">
+    <div class="eyebrow reveal">Eggless &amp; egg · Pre-order only</div>
+    <h1 class="reveal" data-d="1">Made for <span class="it">your</span> day.</h1>
+    <p class="lede reveal" data-d="2"><span class="lede-line" id="lede">Celebration cakes baked to order in small batches — whipped cream and buttercream, finished by hand the morning you collect them.</span></p>
+    <div class="hero-cta reveal" data-d="3">
+      <a class="btn-wa lg" id="heroWa" href="#"><svg><use href="#wa"/></svg>Order on WhatsApp</a>
+      <a class="btn-ghost" href="#menu">See the menu</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</div>
+
+<!-- piped-cream section transition -->
+<div id="pipe" aria-hidden="true">
+  <svg viewBox="-60 -170 190 620">
+    <defs>
+      <linearGradient id="canBody" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0"    stop-color="#a98e71"/>
+        <stop offset=".32"  stop-color="#f5e9d8"/>
+        <stop offset=".58"  stop-color="#e3d2bb"/>
+        <stop offset="1"    stop-color="#9c8166"/>
+      </linearGradient>
+      <linearGradient id="canCap" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#8e7357"/><stop offset=".4" stop-color="#d8c5ad"/>
+        <stop offset="1" stop-color="#8e7357"/>
+      </linearGradient>
+    </defs>
+
+    <g transform="translate(70,0) rotate(90)">
+      <path id="creamPath" class="cream" d="M14,52 C14,14 62,14 62,40 C62,62 26,62 34,38 C44,10 92,16 96,44 C99,64 66,68 72,44 C80,14 128,16 132,46 C135,66 102,68 110,44 C120,14 166,18 170,46 C173,66 140,68 148,44 C158,14 204,18 208,46 C211,66 178,68 186,44 C196,14 242,18 246,46 C249,66 216,68 224,44 C234,14 280,18 284,46 C287,66 254,68 262,44 C272,14 318,18 322,46 C325,66 292,68 300,44 C310,14 360,12 372,34 C382,52 410,50 426,34"/>
+      <path class="cream hl" d="M14,52 C14,14 62,14 62,40 C62,62 26,62 34,38 C44,10 92,16 96,44 C99,64 66,68 72,44 C80,14 128,16 132,46 C135,66 102,68 110,44 C120,14 166,18 170,46 C173,66 140,68 148,44 C158,14 204,18 208,46 C211,66 178,68 186,44 C196,14 242,18 246,46 C249,66 216,68 224,44 C234,14 280,18 284,46 C287,66 254,68 262,44 C272,14 318,18 322,46 C325,66 292,68 300,44 C310,14 360,12 372,34 C382,52 410,50 426,34"/>
+    </g>
+
+    <!-- cream whipper, held inverted. Origin of this group is the nozzle tip. -->
+    <g id="can">
+      <g transform="scale(1.5)">
+        <path d="M-3.4,1 L3.4,1 L4.8,-13 L-4.8,-13 Z" fill="#2b1709"/>
+        <rect x="-11" y="-27.5" width="22" height="15.5" rx="3.5" fill="#3b2211"/>
+        <path d="M9,-25.5 L25,-29.5 L25.6,-23.8 L9,-20" fill="#53311a"/>
+        <circle cx="25" cy="-26.8" r="2.7" fill="#6b3f27"/>
+        <rect x="-17" y="-93" width="34" height="68" rx="9" fill="url(#canBody)"/>
+        <rect x="-17" y="-35" width="34" height="10" rx="4.5" fill="#000" opacity=".16"/>
+        <rect x="-17" y="-78" width="34" height="27" fill="#fffaf3"/>
+        <text x="0" y="-62.5" text-anchor="middle" font-size="16" fill="#6b3f27"
+              font-family="Georgia, 'Times New Roman', serif">&#188;</text>
+        <text x="0" y="-54.5" text-anchor="middle" font-size="4.4" letter-spacing=".7" fill="#9a6a4b"
+              font-family="-apple-system, 'Segoe UI', sans-serif">ONE FOURTH</text>
+        <rect x="-12.5" y="-90" width="5" height="60" rx="2.5" fill="#fff" opacity=".32"/>
+        <rect x="-13" y="-97" width="26" height="6.5" rx="3.2" fill="url(#canCap)"/>
+      </g>
+    </g>
+  </svg>
+  <div class="lbl" id="pipeLbl"></div>
+</div>
+
+<div id="sprinkles" aria-hidden="true"></div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-row" id="tick"></div>
+</div>
+
+<!-- SIGNATURES -->
+<section id="signatures">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Signatures</div>
+      <h2>Three we're <span class="it">known</span> for.</h2>
+    </div>
+    <div class="sigs" id="sigs"></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" style="background:var(--cream-2);padding-top:clamp(56px,9vh,110px)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Celebration cake menu</div>
+      <h2>Every flavour, <span class="it">every</span> price.</h2>
+      <p>Pick a style to see the flavours and what they cost. Every cake is available eggless or with egg.</p>
+      <div class="askme">Ask for sugar free</div>
+    </div>
+
+    <div class="menu-bar reveal">
+      <div class="seg" id="seg">
+        <div class="thumb" id="thumb"></div>
+        <button class="on" data-cat="whipped">Whipped Cream</button>
+        <button data-cat="butter">Butter Cream</button>
+        <button data-cat="bento">Bento</button>
+      </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="eggless" id="eggless"><b>Eggless buttercream</b> is ₹100 extra per kg and ₹50 extra per half kg. Buttercream cakes must be kept chilled.</div>
+  </div>
+</section>
+
+<!-- NOTICE -->
+<section>
+  <div class="wrap">
+    <div class="notice reveal">
+      <div class="label" style="color:rgba(255,255,255,.5)">Before you order</div>
+      <h2>Good things need <span class="it">notice</span>.</h2>
+      <div class="grid-n">
+        <div class="nbox"><div class="k">24 hrs</div><div class="v">Minimum notice on any cake. Pre-orders only — nothing is kept in stock.</div></div>
+        <div class="nbox"><div class="k">3 days</div><div class="v">For anything over 2 kg, and for all themed or custom-decorated cakes.</div></div>
+        <div class="nbox hot"><div class="k">50%</div><div class="v">Non-refundable advance confirms the order. The balance is paid on collection.</div></div>
+        <div class="nbox"><div class="k">Pick-up</div><div class="v">Collected from the bakehouse. There is no home delivery.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:52ch">
+      <div class="label">In their words</div>
+      <h2>What people <span class="it">say</span>.</h2>
+      <p id="revMeta"></p>
+    </div>
+  </div>
+  <div class="marquee reveal" id="marquee"><div class="mrow" id="mrow"></div></div>
+  <div class="wrap">
+    <div class="revfoot reveal">
+      <a class="revlink" href="https://maps.app.goo.gl/RVXiiKYor8PmXvz88" target="_blank" rel="noopener">Read every review on Google →</a>
+      <div class="revwarn" id="revWarn"></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Visit</div>
+      <h2>Collect it <span class="it">warm</span> from us.</h2>
+    </div>
+    <div class="visit">
+      <div class="reveal">
+        <ul class="hours">
+          <li><span>Monday – Saturday</span><span>11:00 am – 7:50 pm</span></li>
+          <li class="closed"><span>Sunday</span><span>Closed</span></li>
+        </ul>
+        <div class="pickup"><b>Pick-up only.</b> Orders are collected in person during opening hours — please come on the day agreed on WhatsApp, and bring the order confirmation.</div>
+        <a class="btn-wa lg" id="visitWa" href="#" style="margin-top:22px"><svg><use href="#wa"/></svg>Ask us anything</a>
+      </div>
+      <div class="map reveal" data-d="1">
+        <div class="mapgrid"></div>
+        <div class="pin"></div>
+        <div class="mapfoot">
+          <strong>One Fourth Bakehouse</strong>
+          <span>Open the map for directions and reviews.</span><br>
+          <a href="https://maps.app.goo.gl/RVXiiKYor8PmXvz88" target="_blank" rel="noopener">Open in Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">The small print</div>
+      <h2>Terms &amp; <span class="it">conditions</span>.</h2>
+    </div>
+    <div class="tgrid" id="terms"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="brand serif">One <em>Fourth</em> Bakehouse</div>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/onefourth_bakehouse/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://maps.app.goo.gl/RVXiiKYor8PmXvz88" target="_blank" rel="noopener">Google Maps</a>
+        <a id="footWa" href="#">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>Pre-order only · Minimum 24 hours · Closed Sundays · No home delivery</span>
+      <span>Sample site — placeholder photography and phone number.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#"><svg><use href="#wa"/></svg><span>Order on WhatsApp</span></a>
+
+<script>
+/* ============ DATA — everything the site shows lives here ============ */
+const PHONE = "919876543210";           // +91 98765 43210  (placeholder)
+const MAPS  = "https://maps.app.goo.gl/RVXiiKYor8PmXvz88";
+
+const ITEMS = [
+  {id:"chocolate-mousse", name:"Chocolate Mousse", fam:"whipped",
+   sub:"Dark chocolate mousse, whipped cream", kg:1200, half:750, bento:350, tag:"cake,chocolate", lock:11},
+  {id:"butterscotch-praline", name:"Butterscotch with Cashew Praline", fam:"whipped",
+   sub:"Butterscotch cream, cashew praline crunch", kg:1250, half:750, bento:null, tag:"cake,caramel", lock:12},
+  {id:"berry-chantilly", name:"Berry Chantilly", fam:"whipped",
+   sub:"Blueberry or strawberry, chantilly cream", kg:1200, half:750, bento:350, tag:"cake,strawberry", lock:13},
+  {id:"red-velvet", name:"Red Velvet", fam:"whipped",
+   sub:"Cream cheese frosting", kg:1250, half:770, bento:420, tag:"redvelvet,cake", lock:14},
+  {id:"caramel-latte", name:"Caramel Latte / Coconut Caramel", fam:"whipped",
+   sub:"Choose caramel latte or coconut caramel", kg:1000, half:650, bento:350, tag:"coffee,cake", lock:15},
+  {id:"black-forest", name:"Black Forest with Strawberry", fam:"whipped",
+   sub:"Cherry, cream and dark chocolate", kg:1250, half:770, bento:null, tag:"blackforest,cake", lock:16, flag:"Seasonal"},
+  {id:"tiramisu", name:"Tiramisu", fam:"whipped",
+   sub:"Coffee-soaked sponge, mascarpone cream", kg:1250, half:770, bento:420, tag:"tiramisu", lock:17},
+  {id:"pistachio-praline", name:"Pistachio Praline Mousse", fam:"whipped",
+   sub:"Pistachio mousse, praline crunch", kg:1350, half:800, bento:null, tag:"pistachio,cake", lock:18},
+  {id:"boston-cream-pie", name:"Boston Cream Pie", fam:"whipped",
+   sub:"Vanilla custard, chocolate glaze", kg:1250, half:770, bento:null, tag:"cake,chocolate,glaze", lock:19},
+
+  {id:"berry-buttercream", name:"Berry Buttercream", fam:"butter",
+   sub:"Blueberry or strawberry buttercream", kg:1400, half:850, bento:null, tag:"buttercream,cake", lock:20},
+  {id:"orange-mocha", name:"Orange Mocha Buttercream", fam:"butter",
+   sub:"Orange and mocha buttercream", kg:1400, half:850, bento:null, tag:"mocha,cake", lock:21},
+  {id:"lemon-blueberry", name:"Lemon Blueberry Vanilla", fam:"butter",
+   sub:"Lemon, blueberry, vanilla buttercream", kg:1400, half:850, bento:null, tag:"lemon,cake", lock:22}
+];
+
+const SIGNATURES = ["pistachio-praline","red-velvet","tiramisu"];
+const SIG_COPY = {
+  "pistachio-praline":"Our most-asked-for cake. A light pistachio mousse with a praline crunch running through it — rich without being heavy, which is why it survives a long celebration.",
+  "red-velvet":"The classic, done properly: a deep red crumb under a tangy cream cheese frosting rather than a sweet one. Available down to bento size for a table of two.",
+  "tiramisu":"Coffee-soaked sponge and mascarpone cream, assembled the morning you collect it. Best eaten the same day, and it rarely lasts longer."
+};
+
+const TERMS = [
+  {i:"i-clock",  h:"Twenty-four hours' notice", key:true,
+   t:"We are a pre-order bakehouse and keep no stock, so every cake needs at least a day."},
+  {i:"i-cal",    h:"Three days for large or themed", key:true,
+   t:"Anything over 2 kg, and all theme cakes, must be ordered at least three days ahead."},
+  {i:"i-pay",    h:"Fifty per cent advance", key:true,
+   t:"A non-refundable 50% advance confirms the order. The balance is paid on collection."},
+  {i:"i-bag",    h:"Collected in person", key:true,
+   t:"Orders are picked up from the bakehouse during opening hours. There is no home delivery."},
+  {i:"i-bento",  h:"Bento on selected flavours",
+   t:"Bento size is only available for the flavours marked on the menu."},
+  {i:"i-chill",  h:"Keep buttercream chilled",
+   t:"Buttercream cakes must stay refrigerated until they are served."},
+  {i:"i-custom", h:"Customisation is extra",
+   t:"Custom decoration carries an additional charge, always quoted before you confirm."},
+  {i:"i-fresh",  h:"Made fresh, never stored",
+   t:"Every order is baked with fresh, high-quality ingredients on the day it is collected."}
+];
+
+/* ---------------------------------------------------------------
+   REVIEWS — PLACEHOLDER TEXT. Not real customers, not real Google
+   reviews. Replace every entry below with wording copied from the
+   actual Google listing, then set PLACEHOLDER to false and fill in
+   GOOGLE.rating / GOOGLE.count. Never ship invented testimonials.
+   --------------------------------------------------------------- */
+const PLACEHOLDER = true;
+const GOOGLE = { rating: null, count: null };
+
+const REVIEWS = [
+  {name:"A. Sharma",  stars:5, when:"2 weeks ago",
+   text:"Ordered the pistachio praline for my wife's birthday and it disappeared in twenty minutes. Not too sweet, which is exactly what we wanted."},
+  {name:"R. Menon",   stars:5, when:"a month ago",
+   text:"The red velvet is the real thing — proper cream cheese frosting, not the sugary kind. Collected it on time and it was still cold."},
+  {name:"P. Iyer",    stars:5, when:"a month ago",
+   text:"Gave them three days for a two-tier anniversary cake and they matched the brief exactly. Worth the advance notice."},
+  {name:"S. Fernandes",stars:4, when:"2 months ago",
+   text:"Lovely tiramisu and very friendly over WhatsApp. Only note is that it's pick-up only, so plan your day around it."},
+  {name:"K. Rao",     stars:5, when:"3 months ago",
+   text:"Bento size was perfect for just the two of us. Ordered in the morning, collected the next evening, no fuss at all."},
+  {name:"N. Dsouza",  stars:5, when:"4 months ago",
+   text:"Best butterscotch I've had in the city. The cashew praline makes it. Already planning the next one."}
+];
+
+const SIZE_LABEL = {kg:"1 kg", half:"½ kg", bento:"Bento"};
+const CAT_LABEL = {whipped:"Whipped Cream", butter:"Butter Cream", bento:"Bento"};
+const TICKER = ["Pre-order only","Minimum 24 hours","Eggless or egg","Closed Sundays","Pick-up only","Baked to order","Open 11:00 – 7:50"];
+
+/* the two lines that alternate under the hero headline */
+const LEDES = [
+  "Celebration cakes baked to order in small batches — whipped cream and buttercream, finished by hand the morning you collect them.",
+  "Everything is made to order, so nothing sits in a display case. These three are the ones people come back for."
+];
+
+/* ============ helpers ============ */
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* always land at the top, even after a refresh restores the old position */
+if("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.scrollTo(0,0);
+window.addEventListener("load",()=>window.scrollTo(0,0));
+
+const rupee = n => "₹" + n.toLocaleString("en-IN");
+const waLink = (item,size) => {
+  const msg = item
+    ? `Hi One Fourth Bakehouse! I saw the ${item.name} (${SIZE_LABEL[size]}) on your website and I'd like to place an order.`
+    : `Hi One Fourth Bakehouse! I'm looking at your website and I'd like to place an order.`;
+  return `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+};
+/* Photo source: drop a real file at ./photos/<id>.jpg and it is used instead. */
+const photoFor = it => [`photos/${it.id}.jpg`, `https://loremflickr.com/800/800/${it.tag}?lock=${it.lock}`];
+
+function lazyImg(el, sources, cls){
+  let i = 0;
+  const tryNext = () => {
+    if(i >= sources.length){ el.remove(); return; }
+    el.src = sources[i++];
+  };
+  el.onload = () => el.classList.add(cls);
+  el.onerror = tryNext;
+  tryNext();
+}
+
+/* ============ ticker ============ */
+const tick = document.getElementById("tick");
+tick.innerHTML = [...TICKER, ...TICKER].map(t => `<span>${t}</span>`).join("");
+
+/* ============ signatures ============ */
+document.getElementById("sigs").innerHTML = SIGNATURES.map((id,i) => {
+  const it = ITEMS.find(x => x.id === id);
+  const chips = [["1 kg",it.kg],["½ kg",it.half],["Bento",it.bento]]
+    .filter(([,v]) => v)
+    .map(([l,v]) => `<div class="chip"><i>${l}</i><b>${rupee(v)}</b></div>`).join("");
+  return `
+  <article class="sig reveal" data-d="${i+1}">
+    <div class="sig-media"><img data-item="${it.id}" alt="${it.name}"></div>
+    <h3>${it.name}</h3>
+    <p class="desc">${SIG_COPY[id]}</p>
+    <div class="prices">${chips}</div>
+    <a class="btn-wa" href="${waLink(it,"kg")}" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Order this cake</a>
+  </article>`;
+}).join("");
+
+/* ============ menu grid ============ */
+/* The toggle now picks a category, not a size. Bento lists only the
+   flavours that come in bento; the others list their whole family. */
+const grid = document.getElementById("grid");
+const egglessNote = document.getElementById("eggless");
+let cat = "whipped";
+
+const itemsFor = c => c === "bento"
+  ? ITEMS.filter(i => i.bento)
+  : ITEMS.filter(i => i.fam === c);
+
+function cardHTML(it){
+  const headSize = cat === "bento" ? "bento" : "kg";
+  /* Bento is one size only, so it gets no "available in" line at all. */
+  const others = cat === "bento" ? "" :
+    [["½ kg",it.half],["Bento",it.bento]]
+      .filter(([,v]) => v)
+      .map(([l,v]) => `<b>${l}</b> ${rupee(v)}`)
+      .join(" · ");
+  return `
+  <article class="card reveal" data-id="${it.id}">
+    <div class="ph">
+      <div class="mono">${it.name.charAt(0)}</div>
+      ${it.flag ? `<div class="flag">${it.flag}</div>` : ``}
+      <img data-item="${it.id}" alt="${it.name}">
+    </div>
+    <div class="card-b">
+      <h4>${it.name}</h4>
+      <div class="sub">${it.sub}</div>
+      <div class="price">
+        <span class="amt">${rupee(it[headSize])}</span>
+        <span class="unit">${SIZE_LABEL[headSize]}</span>
+      </div>
+      ${others ? `<div class="also">Available in ${others}</div>` : ``}
+      <a class="order" href="${waLink(it,headSize)}" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Order</a>
+    </div>
+  </article>`;
+}
+
+function renderMenu(animate){
+  const list = itemsFor(cat);
+  grid.innerHTML = list.map(cardHTML).join("");
+
+  grid.querySelectorAll("img[data-item]").forEach(img=>{
+    lazyImg(img, photoFor(ITEMS.find(x=>x.id===img.dataset.item)), "loaded");
+  });
+
+  grid.querySelectorAll(".card").forEach((c,i)=>{
+    c.classList.add("in");
+    if(animate && !reduceMotion){
+      c.animate([{opacity:0,transform:"translateY(14px)"},{opacity:1,transform:"none"}],
+        {duration:480,delay:i*45,easing:"cubic-bezier(.22,1,.36,1)",fill:"backwards"});
+    }
+  });
+
+  egglessNote.classList.toggle("show", cat === "butter");
+}
+
+/* ============ testimonials marquee ============ */
+const mrow = document.getElementById("mrow");
+const marquee = document.getElementById("marquee");
+
+function revHTML(r){
+  return `<article class="rev">
+    <div class="stars" aria-label="${r.stars} out of 5">${"★".repeat(r.stars)}${"☆".repeat(5-r.stars)}</div>
+    <q>${r.text}</q>
+    <div class="who">
+      <div class="av">${r.name.trim().split(/\s+/).pop().charAt(0)}</div>
+      <div><div class="nm">${r.name}</div><div class="dt">${r.when} · Google</div></div>
+    </div>
+  </article>`;
+}
+mrow.innerHTML = REVIEWS.map(revHTML).join("") + REVIEWS.map(revHTML).join("");
+
+document.getElementById("revMeta").textContent = GOOGLE.rating
+  ? `${GOOGLE.rating} out of 5 across ${GOOGLE.count} reviews on Google.`
+  : "Collected from their Google listing.";
+document.getElementById("revWarn").textContent = PLACEHOLDER
+  ? "Placeholder wording — replace with the real Google reviews before this goes live."
+  : "";
+if(!PLACEHOLDER) document.getElementById("revWarn").style.display = "none";
+
+(function(){
+  let x = 0, half = 0, paused = false, dragging = false, lastX = 0, vel = 0;
+  const SPEED = 0.38;
+
+  function measure(){
+    const first = mrow.children[0], mid = mrow.children[REVIEWS.length];
+    half = mid ? mid.offsetLeft - first.offsetLeft : 0;
+  }
+  measure();
+  window.addEventListener("resize", measure);
+  if(document.fonts) document.fonts.ready.then(measure);
+
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  (function loop(){
+    if(!dragging){
+      x -= paused ? 0 : SPEED;
+      if(vel){ x += vel; vel *= .92; if(Math.abs(vel) < .05) vel = 0; }
+    }
+    if(half){ while(x <= -half) x += half; while(x > 0) x -= half; }
+    mrow.style.transform = `translate3d(${x.toFixed(2)}px,0,0)`;
+    requestAnimationFrame(loop);
+  })();
+
+  marquee.addEventListener("mouseenter",()=>paused = true);
+  marquee.addEventListener("mouseleave",()=>paused = false);
+
+  const down = e => { dragging = true; vel = 0; lastX = (e.touches ? e.touches[0] : e).clientX;
+                      marquee.classList.add("grabbing"); };
+  const move = e => { if(!dragging) return;
+                      const cx = (e.touches ? e.touches[0] : e).clientX;
+                      const d = cx - lastX; lastX = cx; x += d; vel = d * .5; };
+  const up   = () => { dragging = false; marquee.classList.remove("grabbing"); };
+  marquee.addEventListener("mousedown",down);
+  marquee.addEventListener("touchstart",down,{passive:true});
+  window.addEventListener("mousemove",move);
+  marquee.addEventListener("touchmove",move,{passive:true});
+  window.addEventListener("mouseup",up);
+  window.addEventListener("touchend",up);
+})();
+
+/* ============ terms ============ */
+document.getElementById("terms").innerHTML = TERMS.map(t=>`
+  <div class="tcard${t.key ? " key" : ""} reveal">
+    <div class="ti"><svg><use href="#${t.i}"/></svg></div>
+    <div><h4>${t.h}</h4><p>${t.t}</p></div>
+  </div>`).join("");
+
+/* ============ images ============ */
+document.querySelectorAll("#sigs img[data-item]").forEach(img=>{
+  lazyImg(img, photoFor(ITEMS.find(x=>x.id===img.dataset.item)), "loaded");
+});
+lazyImg(document.querySelector("#heroMedia img"),
+  [document.querySelector("#heroMedia img").dataset.src], "loaded");
+
+/* ============ category toggle ============ */
+renderMenu(false);
+
+const seg = document.getElementById("seg"), thumb = document.getElementById("thumb");
+function moveThumb(){
+  const on = seg.querySelector("button.on");
+  thumb.style.left = on.offsetLeft + "px";
+  thumb.style.width = on.offsetWidth + "px";
+}
+seg.querySelectorAll("button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    seg.querySelectorAll("button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on"); moveThumb();
+    cat = b.dataset.cat; renderMenu(true);
+  });
+});
+requestAnimationFrame(moveThumb);
+window.addEventListener("resize",moveThumb);
+document.fonts && document.fonts.ready.then(moveThumb);
+
+/* ============ whatsapp links ============ */
+["navWa","heroWa","visitWa","footWa","fab"].forEach(id=>{
+  const el = document.getElementById(id);
+  el.href = waLink(null,"kg"); el.target = "_blank"; el.rel = "noopener";
+});
+
+/* ============ scroll behaviour ============ */
+const hdr = document.getElementById("hdr"), fab = document.getElementById("fab"),
+      heroMedia = document.getElementById("heroMedia");
+let ticking = false;
+function onScroll(){
+  const y = window.scrollY;
+  hdr.classList.toggle("solid", y > window.innerHeight * .78);
+  fab.classList.toggle("show", y > window.innerHeight * .9);
+  if(y < window.innerHeight) heroMedia.style.transform = `translateY(${y * .32}px)`;
+  ticking = false;
+}
+window.addEventListener("scroll",()=>{ if(!ticking){ requestAnimationFrame(onScroll); ticking = true; } },{passive:true});
+onScroll();
+
+/* ============ reveal on scroll ============ */
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+},{rootMargin:"0px 0px -8% 0px",threshold:.08});
+document.querySelectorAll(".reveal:not(.in)").forEach(el=>{
+  if(!el.closest(".hero-inner")) io.observe(el);
+});
+
+/* ============ hero chocolate pour ============ */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const hero   = document.querySelector(".hero");
+const pour   = document.getElementById("pour");
+const sheet  = pour.querySelector(".sheet");
+const stream = document.getElementById("stream");
+const cue    = document.querySelector(".scroll-cue");
+const anims  = [];
+let poured = false;
+
+/* runners — thin drips that race ahead of the sheet, the detail that sells it */
+[[14,58],[33,92],[52,46],[71,104],[88,70]].forEach(([x,h])=>{
+  const r = document.createElement("div");
+  r.className = "runner";
+  r.style.left = x + "%";
+  r.style.height = h + "px";
+  pour.appendChild(r);
+});
+
+function tintSheet(){
+  if(!poured) return;
+  const img = document.querySelector("#heroMedia img");
+  const ok  = img && img.complete && img.naturalWidth > 0;
+  sheet.style.transition = "opacity 1.3s cubic-bezier(.22,1,.36,1)";
+  sheet.style.opacity = ok ? ".46" : "1";
+}
+
+const fly   = document.getElementById("flyLogo");
+const brand = document.querySelector("header .brand");
+
+/* Park the logo where the chocolate lands, and work out the trip to the corner. */
+function placeFly(){
+  fly.style.left = "0px"; fly.style.top = "0px"; fly.style.transform = "none";
+  const s = fly.getBoundingClientRect();
+  const startLeft = Math.round((innerWidth - s.width) / 2);
+  const startTop  = Math.round(innerHeight * .46 + 30);
+  fly.style.left = startLeft + "px";
+  fly.style.top  = startTop + "px";
+  const t = brand.getBoundingClientRect();
+  return {
+    scale: t.width / s.width,
+    dx: t.left - startLeft,
+    dy: t.top - startTop
+  };
+}
+
+function landLogo(){
+  hdr.classList.add("shown");
+  if(fly.isConnected) requestAnimationFrame(()=>fly.remove());
+}
+
+function finishPour(){
+  if(poured) return;
+  poured = true;
+  hero.classList.add("poured");
+  pour.style.transform = "translateY(0)";
+  stream.style.display = "none";
+  landLogo();
+  cue.classList.add("shown");
+  document.querySelectorAll(".hero-inner .reveal").forEach(el=>el.classList.add("in"));
+  tintSheet();
+}
+
+function runPour(){
+  if(reduce){ finishPour(); return; }
+  const push = a => { anims.push(a); return a; };
+  const trip = placeFly();
+
+  /* 1 — the stream falls */
+  push(stream.animate(
+    [{transform:"scaleY(0)"},{transform:"scaleY(1)"}],
+    {duration:400,delay:80,easing:"cubic-bezier(.55,.06,.68,.19)",fill:"forwards"}));
+
+  push(stream.querySelector(".splat").animate(
+    [{opacity:0,transform:"scale(.35)"},{opacity:1,transform:"scale(1)"},{opacity:0,transform:"scale(1.7)"}],
+    {duration:420,delay:460,easing:"ease-out",fill:"forwards"}));
+
+  /* 2 — the name forms where it landed */
+  push(fly.animate(
+    [{opacity:0,transform:"translateY(16px) scale(.94)"},{opacity:1,transform:"none"}],
+    {duration:520,delay:560,easing:"cubic-bezier(.22,1,.36,1)",fill:"forwards"}));
+
+  push(stream.animate([{opacity:1},{opacity:0}],
+    {duration:360,delay:820,easing:"ease",fill:"forwards"}));
+
+  /* 3 — it travels to the corner and settles into the header */
+  const flight = push(fly.animate(
+    [{transform:"none"},{transform:`translate(${trip.dx}px,${trip.dy}px) scale(${trip.scale})`}],
+    {duration:860,delay:1280,easing:"cubic-bezier(.62,.01,.2,1)",fill:"forwards"}));
+  flight.onfinish = landLogo;
+
+  /* turns from chocolate to cream as the sheet arrives behind it */
+  push(fly.animate([{color:"#46290f"},{color:"#ffffff"}],
+    {duration:420,delay:1700,easing:"ease",fill:"forwards"}));
+
+  /* 4 — the sheet floods down behind everything */
+  pour.querySelectorAll(".runner").forEach((r,i)=>{
+    push(r.animate([{transform:"scaleY(0)"},{transform:"scaleY(1)"}],
+      {duration:700+i*90,delay:1820+i*70,easing:"cubic-bezier(.4,0,.3,1)",fill:"forwards"}));
+  });
+
+  const main = push(pour.animate(
+    [{transform:"translateY(-100%)"},{transform:"translateY(0)"}],
+    {duration:1380,delay:1520,easing:"cubic-bezier(.5,.02,.22,1)",fill:"forwards"}));
+
+  main.onfinish = () => {
+    pour.animate([{transform:"translateY(0)"},{transform:"translateY(8px)"},{transform:"translateY(0)"}],
+      {duration:660,easing:"cubic-bezier(.33,1,.68,1)"});
+    finishPour();
+  };
+}
+
+function skipPour(){
+  if(poured) return;
+  anims.forEach(a=>{ try{ a.finish(); }catch(e){} });
+  finishPour();
+}
+["click","wheel","touchstart","keydown"].forEach(ev=>
+  window.addEventListener(ev,skipPour,{once:true,passive:true}));
+setTimeout(finishPour,6500);                       // safety net
+
+const heroImg = document.querySelector("#heroMedia img");
+if(heroImg) heroImg.addEventListener("load",tintSheet);
+
+/* measure the logo in its real font, or give up waiting after 700ms */
+const fontsReady = (document.fonts && document.fonts.ready) || Promise.resolve();
+Promise.race([fontsReady, new Promise(r=>setTimeout(r,700))]).then(runPour);
+
+/* ============ piped-cream section transition ============ */
+const pipe = document.getElementById("pipe"), pipeLbl = document.getElementById("pipeLbl");
+const pipePaths = pipe.querySelectorAll("path.cream");
+const creamPath = document.getElementById("creamPath");
+const can = document.getElementById("can");
+let piping = false;
+
+const easeIO = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+
+function resetPipe(){
+  const L = creamPath.getTotalLength();
+  pipePaths.forEach(p=>{ p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+}
+
+/* Draws the cream and carries the whipper along at the head of the stroke.
+   The path sits inside a rotated group, so a path point (x,y) lands at
+   (70 - y, x) in the SVG's own coordinates. */
+function drawCream(dur){
+  const L = creamPath.getTotalLength();
+  pipePaths.forEach(p=>{ p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+  const t0 = performance.now();
+  (function frame(now){
+    const raw = Math.min(1, (now - t0) / dur);
+    const e = easeIO(raw);
+    pipePaths.forEach(p=>p.style.strokeDashoffset = String(L * (1 - e)));
+    const pt = creamPath.getPointAtLength(L * e);
+    const tilt = -15 + Math.sin(raw * 16) * 3;          // slight hand wobble
+    can.setAttribute("transform", `translate(${70 - pt.y} ${pt.x}) rotate(${tilt})`);
+    if(raw < 1) requestAnimationFrame(frame);
+  })(t0);
+}
+
+function jumpTo(target){
+  const root = document.documentElement, prev = root.style.scrollBehavior;
+  root.style.scrollBehavior = "auto";
+  target.scrollIntoView();
+  root.style.scrollBehavior = prev;
+}
+
+function pipeTo(hash,label){
+  const target = document.querySelector(hash);
+  if(!target) return;
+  if(reduce || piping){ jumpTo(target); return; }
+  piping = true;
+  pipeLbl.textContent = label;
+
+  resetPipe();
+  pipe.classList.remove("draw");
+  pipe.classList.add("on");
+
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    pipe.classList.add("draw");
+    drawCream(1000);
+  }));
+
+  setTimeout(()=>jumpTo(target), 740);
+  setTimeout(()=>pipe.classList.remove("on"), 1480);
+  setTimeout(()=>{ pipe.classList.remove("draw"); resetPipe(); piping = false; }, 1900);
+}
+
+resetPipe();
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  const hash = a.getAttribute("href");
+  if(hash === "#" || hash === "#top") return;
+  a.addEventListener("click",e=>{
+    e.preventDefault();
+    pipeTo(hash, a.dataset.lbl || a.textContent.trim());
+  });
+});
+
+/* ============ sprinkle burst on order ============ */
+const SPRINKLE = ["#6b3f27","#c2425a","#e8c98f","#fffaf3","#9a6a4b"];
+const sprLayer = document.getElementById("sprinkles");
+
+function sprinkle(x,y){
+  if(reduce) return;
+  for(let i=0;i<20;i++){
+    const s = document.createElement("i");
+    s.style.background = SPRINKLE[i % SPRINKLE.length];
+    s.style.left = x + "px"; s.style.top = y + "px";
+    sprLayer.appendChild(s);
+    const ang = (Math.PI*2*i)/20 + (Math.random()-.5)*.45;
+    const d   = 80 + Math.random()*80;
+    s.animate([
+      {transform:"translate(-50%,-50%) rotate(0deg)",opacity:1},
+      {transform:`translate(${Math.cos(ang)*d}px,${Math.sin(ang)*d*.8+95}px) rotate(${(Math.random()-.5)*760}deg)`,opacity:0}
+    ],{duration:950+Math.random()*400,easing:"cubic-bezier(.17,.67,.4,1)",fill:"forwards"})
+     .onfinish = () => s.remove();
+  }
+}
+
+/* fires on hover, with a cooldown so sweeping the mouse doesn't spam it */
+const lastBurst = new WeakMap();
+function burstFrom(t){
+  const now = performance.now();
+  if((lastBurst.get(t) || 0) > now - 900) return;
+  lastBurst.set(t, now);
+  const r = t.getBoundingClientRect();
+  sprinkle(r.left + r.width/2, r.top + r.height/2);
+}
+document.addEventListener("mouseover",e=>{
+  const t = e.target.closest(".order, .btn-wa, .fab");
+  if(!t || t.classList.contains("off")) return;
+  if(e.relatedTarget && t.contains(e.relatedTarget)) return;   // moving within the button
+  burstFrom(t);
+});
+/* touch screens have no hover, so keep the tap there */
+if(matchMedia("(hover: none)").matches){
+  document.addEventListener("click",e=>{
+    const t = e.target.closest(".order, .btn-wa, .fab");
+    if(t && !t.classList.contains("off")) burstFrom(t);
+  });
+}
+
+/* ============ alternating hero line ============ */
+(function(){
+  const el = document.getElementById("lede");
+  if(!el || reduceMotion) return;
+  let i = 0;
+  setInterval(()=>{
+    el.classList.add("out");
+    setTimeout(()=>{
+      i = (i + 1) % LEDES.length;
+      el.textContent = LEDES[i];
+      el.classList.remove("out");
+    }, 560);
+  }, 5600);
+})();
+</script>
+</body>
+</html>
